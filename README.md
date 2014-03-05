@@ -1,10 +1,10 @@
 # markov
 
-A Clojure library designed to ... well, that part is up to you.
+A clojure library for using Markov Models to generate pseudo-random text.
 
 ## Usage
 
-FIXME
+Coming soon
 
 ## License
 
