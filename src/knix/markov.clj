@@ -36,8 +36,6 @@
                                      (reduce index-frequencies {} ,,)))
 
 
-;; TODO map-filtered somethingwhatsit
-
 (defn lookup [key database]
   (database key))
 
@@ -74,11 +72,16 @@
   (filter #(not (= % :head)) words))
 
 (defn generate [corpus n]
+  "Retuns a function that will generate an infinite sequence of sentences from the given corpus
+   using an order n markov model"
   (let [database (build-database corpus n)
         generation-fn (fn [] (->> (create-sentence database)
                                   remove-head
                                   (interpose " " ,,) 
                                   (apply str ,,)))]
-    (repeatedly generation-fn)))
+    generation-fn))
 
-;; (first (generate (slurp "resources/corpus2.txt") 1))
+;; (defn crossover [corpus-a corpus-b n]
+;;   (let [db-a (build-database corpus-a n)
+;;         db-b (build-database corpus-b n)]
+;;     ))
